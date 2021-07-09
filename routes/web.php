@@ -1,6 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+// use App\Http\Controllers\AirportController;
+use App\Http\Controllers\AirportController;
+use App\Http\Controllers\AirportRunwayController;
+use App\Http\Controllers\RunwaySurfaceController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +20,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    $items = App\Models\RunwaySurface::all();
+
+    return view('dashboard', compact('items'));
+})->middleware(['auth'])->name('dashboard');
+
+Route::get('/dashboard', function () {
+    $items = App\Models\RunwaySurface::all();
+
+    return view('dashboard', compact('items'));
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
+
+
+Route::resource('airport', AirportController::class);
+Route::resource('runway', AirportRunwayController::class);
+Route::resource('surface', RunwaySurfaceController::class);
