@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            <h2 style="display:inline-block">Runwa</h2>
+            <h2 style="display:inline-block">Surface</h2>
             <a href="{{ route('surface.create') }}" style="display: inline-block; float: right">Create New</a>
 
         </h2>
